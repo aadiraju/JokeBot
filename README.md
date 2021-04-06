@@ -3,8 +3,15 @@ An interactive bot made with Rasa that tells the user jokes. The bot is a friend
 
 ## Installation
 
-To install, enter the following into a terminal, after switching to/activating a virtual environment if needed:
-`pip3 install -r requirements.txt`. This should install all required dependencies. 
+To install, enter the following commands into a terminal one after another, after switching to/activating a virtual environment if needed:
+- `pip3 install rasa`
+- `pip3 install spacy`
+- `pip3 install nltk`
+- `spacy download en_core_web_md`
+- `pip install vaderSentiment`
+  
+This should install all required dependencies. (Note: I tried my best to account for all the cases but I am sorry if your installation fails due to 
+other unspecified errors)
 
 ### Other Troubleshooting
 If you have issues with the installation, know that to run the bot you must have `rasa` installed on `Anaconda` or any python virtual environment.
@@ -20,8 +27,6 @@ For detailed instructions on the installation of Rasa please refer to the offici
  `rasa run --m ./models --endpoints endpoints.yml --port 5002 -vv --enable-api --cors "*"` 
  
 and wait for it to launch. **Note:** This may take a while depending on your system.
-
-__Note: If there is an error about `spacy` model not being able to load, run the following command, and it should work: `python -m spacy download en_core_web_md`__
 
 
 ### Terminal Window 2 - Rasa Custom Actions Server 
