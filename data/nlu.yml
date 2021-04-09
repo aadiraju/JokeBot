@@ -240,6 +240,10 @@ nlu:
     - Who is [God]{"entity": "searchtext"}?
     - What is a [chatbot]{"entity": "searchtext"}?
     - Look up [Las Vegas]{"entity": "searchtext"}?
+    - Look up [India]{"entity": "searchtext"}?
+    - Look up [Croatia]{"entity": "searchtext"}?
+    - Look up [Metamorphosis]{"entity": "searchtext"}?
+    - Look up [Software Engineering]{"entity": "searchtext"}?
     - What is [Github]{"entity": "searchtext"}?
     - Who was [Gilgamesh]{"entity": "searchtext"}?
     - Who is [Kevin Hart]{"entity": "searchtext"}?
@@ -267,6 +271,23 @@ nlu:
     - spaghetti
     - baguette
     - steak
+- lookup: searchtext
+  examples: |
+    - Metamorphosis
+    - Franz Kafka
+    - Martin Luther King
+    - University of British Columbia
+    - Okanagan
+    - Software Development
+    - Software Engineering
+    - Computer Science
+    - Pope Francis
+    - Big Data
+    - Data Science
+    - Croatia
+    - India
+    - Canada
+    - USA
 - synonym: joke
   examples: |
     - funny joke
