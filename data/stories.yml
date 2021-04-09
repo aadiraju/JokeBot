@@ -120,3 +120,16 @@ stories:
   - action: utter_finished
   - intent: goodbye
   - action: utter_goodbye
+
+- story: bot does wikipedia searches
+  steps:
+  - intent: ask_wikipedia_search
+  - action: action_wikipedia_search
+  - intent: ask_wikipedia_search
+  - action: action_wikipedia_search
+  - intent: ask_wikipedia_search
+  - action: action_wikipedia_search
+  - intent: finished
+  - action: utter_finished
+  - intent: goodbye
+  - action: utter_goodbye

@@ -8,7 +8,8 @@ To install, enter the following commands into a terminal one after another, afte
 - `pip3 install spacy`
 - `pip3 install nltk`
 - `spacy download en_core_web_md`
-- `pip install vaderSentiment`
+- `pip3 install vaderSentiment`
+- `pip3 install wikipediaapi`
   
 This should install all required dependencies. (Note: I tried my best to account for all the cases but I am sorry if your installation fails due to 
 other unspecified errors)

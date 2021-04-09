@@ -235,6 +235,16 @@ nlu:
     - Let's see more [maymay]{"entity": "jokeformat"}
     - What other [maymay]{"entity": "jokeformat"} do you have?
     - I want to see more [maymay]{"entity": "jokeformat"}
+- intent: ask_wikipedia_search
+  examples: |
+    - Who is [God]{"entity": "searchtext"}?
+    - What is a [chatbot]{"entity": "searchtext"}?
+    - Look up [Las Vegas]{"entity": "searchtext"}?
+    - What is [Github]{"entity": "searchtext"}?
+    - Who was [Gilgamesh]{"entity": "searchtext"}?
+    - Who is [Kevin Hart]{"entity": "searchtext"}?
+    - Who is [Kevin Bacon]{"entity": "searchtext"}?
+    - What was the [Civil Rights Movement]{"entity": "searchtext"}?
 - intent: out_of_bounds
   examples: |
     - What's 2+2?

@@ -59,3 +59,7 @@ rules:
   steps:
   - intent: out_of_bounds
   - action: utter_outofbounds_response
+- rule: Search Wikipedia when the user asks for something to be looked up
+  steps:
+  - intent: ask_wikipedia_search
+  - action: action_wikipedia_search

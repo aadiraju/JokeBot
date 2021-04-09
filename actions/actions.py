@@ -9,6 +9,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import secrets
+import wikipediaapi
 
 
 class ActionTellJoke(Action):
@@ -47,5 +48,32 @@ class ActionHandleFeedback(Action):
         else:
             dispatcher.utter_message(response="utter_feedback_bad")  # If feedback is neutral or negative utter bad
             # feedback
+
+        return []
+
+
+class ActionWikipedia(Action):
+
+    def name(self) -> Text:
+        return "action_wikipedia_search"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        recentSearch = next(tracker.get_latest_entity_values("searchtext"),
+                            None)  # Extracts the most recent search text
+        try:
+            wiki_obj = wikipediaapi.Wikipedia('en')
+            page_py = wiki_obj.page(recentSearch)
+            if page_py.exists():
+                # Display a summary of the wikipedia page and provide a link to the full page
+                outStr = "Here is what I found on Wikipedia: \n " + page_py.summary[
+                                                                    0:250] + "...\n Here is the full link to the page: " + page_py.fullurl
+                dispatcher.utter_message(text=outStr)
+            else:
+                # display error message and continue
+                dispatcher.utter_message(text="Sorry, I couldn't find that page on Wikipedia!")
+        except():
+            dispatcher.utter_message(text="Sorry, I couldn't find that page on Wikipedia!")
 
         return []

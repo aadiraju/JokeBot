@@ -31,9 +31,12 @@ intents:
     use_entities: true
 - nlu_fallback:
     use_entities: true
+- ask_wikipedia_search:
+    use_entities: true
 entities:
 - jokeformat
 - food
+- searchtext
 slots:
   gives_consent:
     type: rasa.shared.core.slots.BooleanSlot
@@ -509,5 +512,6 @@ actions:
 - utter_ask_rephrase
 - action_tell_joke
 - action_handle_feedback
+- action_wikipedia_search
 forms: {}
 e2e_actions: []
