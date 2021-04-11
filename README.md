@@ -10,6 +10,7 @@ To install, enter the following commands into a terminal one after another, afte
 - `spacy download en_core_web_md`
 - `pip3 install vaderSentiment`
 - `pip3 install wikipedia`
+- `pip3 install flickrapi`
   
 This should install all required dependencies. (Note: I tried my best to account for all the cases but I am sorry if your installation fails due to 
 other unspecified errors)
