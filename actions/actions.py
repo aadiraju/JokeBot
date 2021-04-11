@@ -9,7 +9,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import secrets
-import wikipediaapi
+import wikipedia
 
 
 class ActionTellJoke(Action):
@@ -63,17 +63,17 @@ class ActionWikipedia(Action):
         recentSearch = next(tracker.get_latest_entity_values("searchtext"),
                             None)  # Extracts the most recent search text
         try:
-            wiki_obj = wikipediaapi.Wikipedia('en')
-            page_py = wiki_obj.page(recentSearch)
-            if page_py.exists():
-                # Display a summary of the wikipedia page and provide a link to the full page
-                outStr = "Here is what I found on Wikipedia: \n " + page_py.summary[
-                                                                    0:250] + "...\n Here is the full link to the page: " + page_py.fullurl
-                dispatcher.utter_message(text=outStr)
-            else:
-                # display error message and continue
-                dispatcher.utter_message(text="Sorry, I couldn't find that page on Wikipedia!")
-        except():
-            dispatcher.utter_message(text="Sorry, I couldn't find that page on Wikipedia!")
+            page_py = wikipedia.page(wikipedia.search(recentSearch)[0])
+            # Display a summary of the wikipedia page and provide a link to the full page
+            outStr = "Here is what I found on Wikipedia: \n " + page_py.summary[
+                                                                    0:250] + "...\n Here is the full link to the page: " + page_py.url
+            dispatcher.utter_message(text=outStr)
+        except wikipedia.exceptions.DisambiguationError as e:
+            dispatcher.utter_message(text="Sorry, I couldn't find that page on Wikipedia! It is a disambiguation "
+                                          "error, so try saying something more specific, like: 'look up Lexus("
+                                          "company)'")
+        except wikipedia.exceptions.WikipediaException as e:
+            dispatcher.utter_message(text="Sorry, I couldn't find that page on Wikipedia! Please check your spelling "
+                                          "or rephrase the word")
 
         return []
