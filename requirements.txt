@@ -1,0 +1,11 @@
+cryptography==3.4.7
+dnspython==1.16.0
+en-core-web-md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.0.0/en_core_web_md-3.0.0-py3-none-any.whl
+flickrapi==2.4.0
+nltk==3.5
+pipdeptree==2.0.0
+rasa==2.4.3
+vaderSentiment==3.3.2
+wikipedia==1.4.0
+Wikipedia-API==0.5.4
+wincertstore==0.2

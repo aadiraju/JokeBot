@@ -1,16 +1,12 @@
-# JokeBot
+# JokeBot - Individual Project by Abhineeth Adiraju
 An interactive bot made with Rasa that tells the user jokes. The bot is a friend trying to become a comedian and the user's role is to give feedback on their jokes. 
+
+This fork in particular has feature updates for the [Individual Project](#updates-for-individual-project).
 
 ## Installation
 
-To install, enter the following commands into a terminal one after another, after switching to/activating a virtual environment if needed:
-- `pip3 install rasa`
-- `pip3 install spacy`
-- `pip3 install nltk`
-- `spacy download en_core_web_md`
-- `pip3 install vaderSentiment`
-- `pip3 install wikipedia`
-- `pip3 install flickrapi`
+To install, enter the following command into a terminal, after switching to/activating a virtual environment if needed :
+`pip3 install -r requirements.txt`
   
 This should install all required dependencies. (Note: I tried my best to account for all the cases but I am sorry if your installation fails due to 
 other unspecified errors)
@@ -28,7 +24,11 @@ For detailed instructions on the installation of Rasa please refer to the offici
 
  `rasa run --m ./models --endpoints endpoints.yml --port 5002 -vv --enable-api --cors "*"` 
  
-and wait for it to launch. **Note:** This may take a while depending on your system.
+and wait for it to launch. It is done when you see a message that looks like this printed on the console:
+
+`INFO     root  - Rasa server is up and running.`
+
+**Note:** This may take a while depending on your system.
 
 
 ### Terminal Window 2 - Rasa Custom Actions Server 
@@ -36,7 +36,11 @@ Again in the root folder of the repository, enter the following into the console
 
 `rasa run actions`
 
-The command above will run a custom actions server for the bot to be able to work properly.
+The command above will run a custom actions server for the bot to be able to work properly. It should says something like:
+
+`INFO     rasa_sdk.endpoint  - Action endpoint is up and running on http://localhost:5055`
+
+once it is done.
 
 ### Terminal Window 3 - HTML Page for Bot GUI
 Once the commands finish running, in another **separate** terminal, 
@@ -115,3 +119,7 @@ another layer of accessibility to our bot, so the conversation can be enjoyed to
    ![Bot extracts a negative sentiment](images/botsentimentneg.png)
 
 Here the bot detects the correct sentiment from the user messages.
+
+## Updates for Individual Project
+- An added feature to search for Wikipedia articles using Wikipedia API
+- An added feature that incorporates Flickr API to enhance the conversation
