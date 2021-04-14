@@ -80,17 +80,22 @@ class ActionWikipedia(Action):
         recentSearch = next(tracker.get_latest_entity_values("searchtext"),
                             None)  # Extracts the most recent search text
         try:
-            page_py = wikipedia.page(wikipedia.search(recentSearch)[0])
+            page_py = wikipedia.page(wikipedia.search(recentSearch)[0], auto_suggest=False)
             # Display a summary of the wikipedia page and provide a link to the full page
-            outStr = "Here is what I found on Wikipedia: \n " + page_py.summary[
-                                                                0:250] + "...\n Here is the full link to the page: " + page_py.url
+            outStr = "Here is what I found on Wikipedia: \n " + wikipedia.summary(wikipedia.search(recentSearch)[0],
+                                                                                  auto_suggest=False,
+                                                                                  sentences=2) + "...\n Here is the " \
+                                                                                                 "full link to the " \
+                                                                                                 "page: " + page_py.url
             dispatcher.utter_message(text=outStr)
         except wikipedia.exceptions.DisambiguationError as e:
             dispatcher.utter_message(text="Sorry, I couldn't find that page on Wikipedia! It is a disambiguation "
-                                          "error, so try saying something more specific, like: 'look up Lexus("
+                                          "error, so try saying something more specific, like: 'look up Lexus ("
                                           "company)'")
+            print(e)
         except wikipedia.exceptions.WikipediaException as e:
             dispatcher.utter_message(text="Sorry, I couldn't find that page on Wikipedia! Please check your spelling "
                                           "or rephrase the word")
+            print(e)
 
         return []
